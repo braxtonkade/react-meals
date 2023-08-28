@@ -14,14 +14,14 @@ const Cart = () => {
     total,
     ordered,
     setCart,
-    setToggleCart,
+    setToggleModal,
     setOrdered,
     setPrevOrders,
     setOrdering,
   } = useContext(AppContext);
 
   function handleCloseCart() {
-    setToggleCart(false);
+    setToggleModal(false);
   }
 
   function handleOrderCart() {

@@ -4,7 +4,7 @@ import styles from "../css-modules/HeaderCartButton.module.css";
 import CartIcon from "./CartIcon";
 
 const HeaderCartButton = () => {
-  const { cart, setToggleCart } = useContext(AppContext);
+  const { cart, setToggleModal } = useContext(AppContext);
 
   let amount;
   if (cart.length > 0) {
@@ -14,7 +14,7 @@ const HeaderCartButton = () => {
   }
 
   function handleOpenCart() {
-    setToggleCart(true);
+    setToggleModal(true);
   }
 
   return (
