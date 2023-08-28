@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../css-modules/Header.module.css";
 import meals from "../assets/images/meals.jpg";
 import HeaderCartButton from "./HeaderCartButton";
-import LoginButton from "./LoginButton";
+import Button from "./Button";
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
         <h2>ReactMeals</h2>
         <div className={styles["btn-container"]}>
           <HeaderCartButton />
-          <LoginButton />
+          <Button label={"Login"} />
         </div>
       </div>
       <div className={styles["main-image"]}>

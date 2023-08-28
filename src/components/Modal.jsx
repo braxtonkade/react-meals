@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../css-modules/Modal.module.css";
 import Cart from "./Cart";
 import LoginPage from "./LoginPage";
+import CartContext from "../context/CartContext";
+import ContinueAsGuest from "./ContinueAsGuest";
 
 const Modal = () => {
+  const { ordering } = useContext(CartContext);
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        {/* <Cart /> */}
-        <LoginPage />
+        {/* {!ordering && <Cart />}
+        {ordering && <LoginPage />} */}
+        <ContinueAsGuest />
       </div>
     </div>
   );

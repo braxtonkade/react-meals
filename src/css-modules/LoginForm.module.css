@@ -1,4 +1,26 @@
 .btn-container {
+  width: 75%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.guest-btn {
+  font: inherit;
+  color: #4d1601;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #4d1601;
+  border-radius: 25px;
+  font-weight: bold;
+  padding: 0.5rem 3rem;
+  /* margin: 1.5rem 0; */
+  margin-bottom: 1.25rem;
+}
+
+hr {
+  color: #4d1601;
+  width: 100%;
 }

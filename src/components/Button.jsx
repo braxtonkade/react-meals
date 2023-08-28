@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "../css-modules/HeaderCartButton.module.css";
 
-const LoginButton = () => {
+const Button = ({ label }) => {
   return (
     <>
-      <button className={styles.button}>Login</button>
+      <button className={styles.button}>{label}</button>
     </>
   );
 };
 
-export default LoginButton;
+export default Button;

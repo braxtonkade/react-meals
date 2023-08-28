@@ -9,16 +9,19 @@ function App() {
   const [prevOrders, setPrevOrders] = useState([]);
   const [total, setTotal] = useState(0);
   const [toggleCart, setToggleCart] = useState(false);
+  const [ordering, setOrdering] = useState(false);
   const [ordered, setOrdered] = useState(false);
 
   const cartContext = {
     cart: cart,
     total: total,
+    ordering: ordering,
     ordered: ordered,
     setCart,
     setToggleCart,
     setOrdered,
     setPrevOrders,
+    setOrdering,
   };
 
   useEffect(() => {

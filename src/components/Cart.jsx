@@ -17,6 +17,7 @@ const Cart = () => {
     setToggleCart,
     setOrdered,
     setPrevOrders,
+    setOrdering,
   } = useContext(CartContext);
 
   function handleCloseCart() {
@@ -24,10 +25,11 @@ const Cart = () => {
   }
 
   function handleOrderCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    setOrdered(true);
-    setPrevOrders((prev) => [...prev, cart]);
-    setCart([]);
+    // localStorage.setItem("cart", JSON.stringify(cart));
+    // setOrdered(true);
+    // setPrevOrders((prev) => [...prev, cart]);
+    // setCart([]);
+    setOrdering(true);
   }
 
   return (

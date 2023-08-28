@@ -1,12 +1,12 @@
 import React from "react";
-import LoginButton from "./LoginButton";
+import Button from "./Button";
 import styles from "../css-modules/LoginForm.module.css";
 
 const LoginForm = () => {
   return (
     <form>
       <div className="form-group my-4">
-        <label className="fs-5" for="exampleInputEmail1">
+        <label className="fs-5" html="exampleInputEmail1">
           Email address
         </label>
         <input
@@ -18,7 +18,7 @@ const LoginForm = () => {
         />
       </div>
       <div className="form-group my-4">
-        <label className="fs-5" for="exampleInputPassword1">
+        <label className="fs-5" htmlFor="exampleInputPassword1">
           Password
         </label>
         <input
@@ -29,7 +29,10 @@ const LoginForm = () => {
         />
       </div>
       <div className={styles["btn-container"]}>
-        <LoginButton />
+        <Button label={"Login"} />
+        <hr />
+        <button className={styles["guest-btn"]}>Continue As Guest</button>
+        <a href="">Create an account</a>
       </div>
     </form>
   );
