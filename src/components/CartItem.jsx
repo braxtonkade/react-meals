@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 import styles from "../css-modules/CartItem.module.css";
 
 const CartItem = ({ name, price, amount }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(AppContext);
 
   // Can you reduce duplication in handleAmountIncrease and handleAmountDecrease?
 

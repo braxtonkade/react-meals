@@ -2,10 +2,10 @@ import { useContext } from "react";
 import styles from "../css-modules/OrderView.module.css";
 import Card from "./Card";
 import OrderItem from "./OrderItem";
-import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 
 const OrderView = () => {
-  const { setOrdered } = useContext(CartContext);
+  const { setOrdered } = useContext(AppContext);
   const order = JSON.parse(localStorage.getItem("cart"));
 
   const total = order

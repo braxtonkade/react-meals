@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import "animate.css/animate.css";
 
-import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 import styles from "../css-modules/Cart.module.css";
 import emptyCart from "../assets/images/empty-cart.svg";
 import greenCheck from "../assets/images/white-check-in-green-circle.jpg";
@@ -18,7 +18,7 @@ const Cart = () => {
     setOrdered,
     setPrevOrders,
     setOrdering,
-  } = useContext(CartContext);
+  } = useContext(AppContext);
 
   function handleCloseCart() {
     setToggleCart(false);

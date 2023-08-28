@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CartContext from "./context/CartContext";
+import AppContext from "./context/AppContext";
 import Header from "./components/Header";
 import Meals from "./components/Meals";
 import Modal from "./components/Modal";
@@ -12,7 +12,7 @@ function App() {
   const [ordering, setOrdering] = useState(false);
   const [ordered, setOrdered] = useState(false);
 
-  const cartContext = {
+  const context = {
     cart: cart,
     total: total,
     ordering: ordering,
@@ -40,13 +40,13 @@ function App() {
   }, [prevOrders]);
 
   return (
-    <CartContext.Provider value={cartContext}>
+    <AppContext.Provider value={context}>
       <div>
         <Header />
         <Meals />
         {toggleCart && <Modal />}
       </div>
-    </CartContext.Provider>
+    </AppContext.Provider>
   );
 }
 

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 import MealsSummary from "./MealsSummary";
 import AvailableMeals from "./AvailableMeals";
 import OrderView from "./OrderView";
 
 const Meals = () => {
-  const { ordered } = useContext(CartContext);
+  const { ordered } = useContext(AppContext);
   return (
     <>
       <MealsSummary />

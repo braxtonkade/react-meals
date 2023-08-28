@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 import styles from "../css-modules/HeaderCartButton.module.css";
 import CartIcon from "./CartIcon";
 
 const HeaderCartButton = () => {
-  const { cart, setToggleCart } = useContext(CartContext);
+  const { cart, setToggleCart } = useContext(AppContext);
 
   let amount;
   if (cart.length > 0) {

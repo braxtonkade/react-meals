@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import CartContext from "../context/CartContext";
+import AppContext from "../context/AppContext";
 import styles from "../css-modules/MealItemForm.module.css";
 import inputStyles from "../css-modules/Input.module.css";
 
 const MealItemForm = ({ id, name, price }) => {
-  const { setCart } = useContext(CartContext);
+  const { setCart } = useContext(AppContext);
   const inputRef = useRef();
 
   function handleSubmit(e) {
