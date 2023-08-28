@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "../css-modules/HeaderCartButton.module.css";
 
 const LoginButton = () => {
