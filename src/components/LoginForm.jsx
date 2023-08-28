@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./Button";
 import styles from "../css-modules/LoginForm.module.css";
+import AppContext from "../context/AppContext";
 
 const LoginForm = () => {
+  const { ordering, setLoggingIn, setOrdering } = useContext(AppContext);
+
+  function handleGuestLogin() {
+    setLoggingIn(false);
+    setOrdering(true);
+  }
+
   return (
     <form>
       <div className="form-group my-4">
@@ -31,7 +39,11 @@ const LoginForm = () => {
       <div className={styles["btn-container"]}>
         <Button label={"Login"} />
         <hr />
-        <button className={styles["guest-btn"]}>Continue As Guest</button>
+        {ordering && (
+          <button className={styles["guest-btn"]} onClick={handleGuestLogin}>
+            Continue As Guest
+          </button>
+        )}
         <a href="">Create an account</a>
       </div>
     </form>

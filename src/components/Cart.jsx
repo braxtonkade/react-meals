@@ -18,6 +18,7 @@ const Cart = () => {
     setOrdered,
     setPrevOrders,
     setOrdering,
+    setLoggingIn,
   } = useContext(AppContext);
 
   function handleCloseCart() {
@@ -29,6 +30,7 @@ const Cart = () => {
     // setOrdered(true);
     // setPrevOrders((prev) => [...prev, cart]);
     // setCart([]);
+    setLoggingIn(true);
     setOrdering(true);
   }
 

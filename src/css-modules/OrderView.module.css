@@ -5,6 +5,10 @@
   animation: meals-appear 1s ease-out forwards;
 }
 
+.customer-details {
+  margin: 2rem 0;
+}
+
 .heading {
   text-align: center;
   border-bottom: 1px solid #ccc;
@@ -22,7 +26,7 @@
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin: 0.5rem 1rem;
 }
 
@@ -38,6 +42,10 @@
   margin: 2rem auto;
   background-color: #8a2b06;
   color: white;
+}
+.flex {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes meals-appear {

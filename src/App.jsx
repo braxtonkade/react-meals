@@ -15,6 +15,7 @@ function App() {
   const [ordered, setOrdered] = useState(false);
 
   const context = {
+    guest: guest,
     cart: cart,
     total: total,
     ordering: ordering,
@@ -30,6 +31,15 @@ function App() {
   };
 
   useEffect(() => {
+    console.log(guest);
+    console.log(cart);
+    console.log(toggleModal);
+    console.log(loggingIn);
+    console.log(ordering);
+    console.log(ordered);
+  }, [prevOrders]);
+
+  useEffect(() => {
     if (cart.length > 0) {
       let prices = cart.map((item) => {
         return item.price * item.amount;
@@ -39,10 +49,6 @@ function App() {
       setTotal(0);
     }
   }, [cart]);
-
-  useEffect(() => {
-    console.log(prevOrders);
-  }, [prevOrders]);
 
   return (
     <AppContext.Provider value={context}>
