@@ -6,13 +6,13 @@ import AppContext from "../context/AppContext";
 import ContinueAsGuest from "./ContinueAsGuest";
 
 const Modal = () => {
-  const { ordering } = useContext(AppContext);
+  const { ordered, ordering, loggingIn } = useContext(AppContext);
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        {/* {!ordering && <Cart />}
-        {ordering && <LoginPage />} */}
-        <ContinueAsGuest />
+        {!ordering && !loggingIn && <Cart />}
+        {/* {(loggingIn || ordering) && <LoginPage />} */}
+        {ordering && !loggingIn && !ordered && <ContinueAsGuest />}
       </div>
     </div>
   );

@@ -5,10 +5,12 @@ import Meals from "./components/Meals";
 import Modal from "./components/Modal";
 
 function App() {
+  const [guest, setGuest] = useState(null);
   const [cart, setCart] = useState([]);
   const [prevOrders, setPrevOrders] = useState([]);
   const [total, setTotal] = useState(0);
-  const [toggleCart, setToggleCart] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
   const [ordering, setOrdering] = useState(false);
   const [ordered, setOrdered] = useState(false);
 
@@ -17,11 +19,14 @@ function App() {
     total: total,
     ordering: ordering,
     ordered: ordered,
+    loggingIn: loggingIn,
+    setLoggingIn,
     setCart,
-    setToggleCart,
+    setToggleModal,
     setOrdered,
     setPrevOrders,
     setOrdering,
+    setGuest,
   };
 
   useEffect(() => {
@@ -44,7 +49,7 @@ function App() {
       <div>
         <Header />
         <Meals />
-        {toggleCart && <Modal />}
+        {toggleModal && <Modal />}
       </div>
     </AppContext.Provider>
   );
