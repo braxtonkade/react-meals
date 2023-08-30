@@ -12,6 +12,7 @@ const Cart = () => {
   const {
     cart,
     total,
+    guest,
     ordered,
     setCart,
     setToggleModal,
@@ -30,6 +31,7 @@ const Cart = () => {
     // setOrdered(true);
     // setPrevOrders((prev) => [...prev, cart]);
     // setCart([]);
+
     setLoggingIn(true);
     setOrdering(true);
   }

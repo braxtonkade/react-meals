@@ -4,7 +4,12 @@ import styles from "../css-modules/LoginForm.module.css";
 import AppContext from "../context/AppContext";
 
 const LoginForm = () => {
-  const { ordering, setLoggingIn, setOrdering } = useContext(AppContext);
+  const { ordering, setLoggingIn, setOrdering, setNewUser } =
+    useContext(AppContext);
+
+  function handleNewUser() {
+    setNewUser(true);
+  }
 
   function handleGuestLogin() {
     setLoggingIn(false);
@@ -44,7 +49,9 @@ const LoginForm = () => {
             Continue As Guest
           </button>
         )}
-        <a href="">Create an account</a>
+        <button type="button" className="btn btn-link" onClick={handleNewUser}>
+          Create an account
+        </button>
       </div>
     </form>
   );

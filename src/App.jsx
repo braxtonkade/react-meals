@@ -5,6 +5,8 @@ import Meals from "./components/Meals";
 import Modal from "./components/Modal";
 
 function App() {
+  const [user, setUser] = useState({});
+  const [newUser, setNewUser] = useState(false);
   const [guest, setGuest] = useState(null);
   const [cart, setCart] = useState([]);
   const [prevOrders, setPrevOrders] = useState([]);
@@ -15,6 +17,8 @@ function App() {
   const [ordered, setOrdered] = useState(false);
 
   const context = {
+    user: user,
+    newUser: newUser,
     guest: guest,
     cart: cart,
     total: total,
@@ -28,16 +32,9 @@ function App() {
     setPrevOrders,
     setOrdering,
     setGuest,
+    setUser,
+    setNewUser,
   };
-
-  useEffect(() => {
-    console.log(guest);
-    console.log(cart);
-    console.log(toggleModal);
-    console.log(loggingIn);
-    console.log(ordering);
-    console.log(ordered);
-  }, [prevOrders]);
 
   useEffect(() => {
     if (cart.length > 0) {

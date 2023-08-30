@@ -13,13 +13,26 @@ const ConfirmOrder = () => {
     setPrevOrders,
     setCart,
     setOrdering,
+    setGuest,
   } = useContext(AppContext);
 
+  // function handlePost(user, order) {
+  //   fetch("https://react-meals-316e6-default-rtdb.firebaseio.com/users.json", {
+  //     method: "POST",
+  //     body: JSON.stringify({ user, order }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  // }
+
   function handlePlaceOrder() {
+    // handlePost(guest, cart);
     setOrdered(true);
     setPrevOrders((prev) => [...prev, cart]);
     setCart([]);
     setOrdering(false);
+    setGuest(null);
   }
 
   return (
