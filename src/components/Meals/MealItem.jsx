@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../css-modules/MealItem.module.css";
-import MealItemForm from "./MealItemForm";
+import styles from "./MealItem.module.css";
+import MealItemForm from "../Forms/MealItemForm";
 
 const MealItem = ({ id, name, description, price }) => {
   return (

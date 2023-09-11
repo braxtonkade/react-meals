@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import styles from "../css-modules/OrderView.module.css";
-import Card from "./Card";
-import OrderItem from "./OrderItem";
-import AppContext from "../context/AppContext";
+import styles from "./OrderView.module.css";
+import Card from "../UI/Card";
+import OrderItem from "../ConfirmOrder/OrderItem";
+import AppContext from "../../context/AppContext";
 
 const OrderView = () => {
   const { setOrdered } = useContext(AppContext);

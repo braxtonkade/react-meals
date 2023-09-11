@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Button from "./Button";
-import styles from "../css-modules/LoginForm.module.css";
-import AppContext from "../context/AppContext";
+import Button from "../UI/Button";
+import styles from "./LoginForm.module.css";
+import AppContext from "../../context/AppContext";
 
 const LoginForm = () => {
   const { ordering, setLoggingIn, setOrdering, setNewUser } =
@@ -9,6 +9,7 @@ const LoginForm = () => {
 
   function handleNewUser() {
     setNewUser(true);
+    setLoggingIn(false);
   }
 
   function handleGuestLogin() {

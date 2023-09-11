@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 
 import "animate.css/animate.css";
 
-import AppContext from "../context/AppContext";
-import styles from "../css-modules/Cart.module.css";
-import emptyCart from "../assets/images/empty-cart.svg";
-import greenCheck from "../assets/images/white-check-in-green-circle.jpg";
+import AppContext from "../../context/AppContext";
+import styles from "./Cart.module.css";
+import emptyCart from "../../assets/images/empty-cart.svg";
+import greenCheck from "../../assets/images/white-check-in-green-circle.jpg";
 import CartItem from "./CartItem";
 
 const Cart = () => {
@@ -27,12 +27,7 @@ const Cart = () => {
   }
 
   function handleOrderCart() {
-    // localStorage.setItem("cart", JSON.stringify(cart));
-    // setOrdered(true);
-    // setPrevOrders((prev) => [...prev, cart]);
-    // setCart([]);
-
-    setLoggingIn(true);
+    // setLoggingIn(true);
     setOrdering(true);
   }
 

@@ -1,24 +1,26 @@
 import React, { useContext } from "react";
-import styles from "../css-modules/Header.module.css";
-import meals from "../assets/images/meals.jpg";
+import styles from "./Header.module.css";
+import meals from "../../assets/images/meals.jpg";
 import HeaderCartButton from "./HeaderCartButton";
-import Button from "./Button";
-import AppContext from "../context/AppContext";
+import Button from "../UI/Button";
+import AppContext from "../../context/AppContext";
 
 const Header = () => {
-  const { setToggleModal, setLoggingIn } = useContext(AppContext);
+  const { setToggleModal, setLoggingIn, user } = useContext(AppContext);
 
   function handleLoginClick() {
     setLoggingIn(true);
     setToggleModal(true);
   }
+
+  const btnLabel = user ? user.firstName : "Login";
   return (
     <>
       <div className={styles.header}>
         <h2>ReactMeals</h2>
         <div className={styles["btn-container"]}>
           <HeaderCartButton />
-          <Button label={"Login"} onClick={handleLoginClick} />
+          <Button label={btnLabel} onClick={handleLoginClick} />
         </div>
       </div>
       <div className={styles["main-image"]}>

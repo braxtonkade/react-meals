@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import AppContext from "../context/AppContext";
-import styles from "../css-modules/HeaderCartButton.module.css";
+import AppContext from "../../context/AppContext";
+import styles from "./HeaderCartButton.module.css";
 import CartIcon from "./CartIcon";
 
 const HeaderCartButton = () => {

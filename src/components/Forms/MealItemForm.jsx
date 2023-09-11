@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import AppContext from "../context/AppContext";
-import styles from "../css-modules/MealItemForm.module.css";
-import inputStyles from "../css-modules/Input.module.css";
+import AppContext from "../../context/AppContext";
+import styles from "./MealItemForm.module.css";
+import inputStyles from "./Input.module.css";
 
 const MealItemForm = ({ id, name, price }) => {
   const { setCart } = useContext(AppContext);

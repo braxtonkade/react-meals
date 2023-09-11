@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css-modules/HeaderCartButton.module.css";
+import styles from "./HeaderCartButton.module.css";
 
 const CartIcon = () => {
   return (

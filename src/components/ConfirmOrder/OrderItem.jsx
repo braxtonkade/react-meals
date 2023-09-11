@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css-modules/MealItem.module.css";
+import styles from "./MealItem.module.css";
 
 const OrderItem = ({ name, price, amount }) => {
   return (

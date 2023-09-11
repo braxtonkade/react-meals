@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "../css-modules/AvailableMeals.module.css";
-import meals from "../assets/data/dummyMeals";
-import Card from "./Card";
-import MealItem from "./MealItem";
+import styles from "./AvailableMeals.module.css";
+import meals from "../../assets/data/dummyMeals";
+import Card from "../UI/Card";
+import MealItem from "../Meals/MealItem";
 
 const AvailableMeals = () => {
   return (

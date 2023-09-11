@@ -1,9 +1,19 @@
 import React, { useContext, useRef } from "react";
-import Button from "./Button";
-import AppContext from "../context/AppContext";
+import Button from "../UI/Button";
+import AppContext from "../../context/AppContext";
 
 const UserInfoForm = () => {
-  const { setGuest } = useContext(AppContext);
+  const {
+    newUser,
+    guest,
+    setUser,
+    setNewUser,
+    setGuest,
+    setLoggedIn,
+    setLoggingIn,
+    setToggleModal,
+  } = useContext(AppContext);
+
   const firstName = useRef(null);
   const lastName = useRef(null);
   const email = useRef(null);
@@ -17,7 +27,18 @@ const UserInfoForm = () => {
       user.lastName = lastName.current.value;
       user.email = email.current.value;
     }
-    setGuest(user);
+
+    if (newUser) {
+      setUser(user);
+      setNewUser(false);
+      setLoggedIn(true);
+      setLoggingIn(false);
+      setToggleModal(false);
+    }
+
+    if (guest) {
+      setGuest(user);
+    }
   }
 
   return (

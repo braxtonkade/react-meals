@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import AppContext from "../context/AppContext";
+import AppContext from "../../context/AppContext";
 import OrderItem from "./OrderItem";
-import styles from "../css-modules/OrderView.module.css";
-import Button from "./Button";
+import styles from "./OrderView.module.css";
+import Button from "../UI/Button";
 
 const ConfirmOrder = () => {
   const {
     cart,
     total,
+    user,
     guest,
     setOrdered,
     setPrevOrders,
@@ -61,13 +62,14 @@ const ConfirmOrder = () => {
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            First Name: <b>{guest.firstName}</b>
+            First Name:{" "}
+            <b>{user !== null ? user.firstName : guest.firstName}</b>
           </li>
           <li className="list-group-item">
-            Last Name: <b>{guest.lastName}</b>
+            Last Name: <b>{user !== null ? user.lastName : guest.lastName}</b>
           </li>
           <li className="list-group-item">
-            Email: <b>{guest.email}</b>
+            Email: <b>{user !== null ? user.email : guest.email}</b>
           </li>
         </ul>
       </div>

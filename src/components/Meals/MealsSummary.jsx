@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css-modules/MealsSummary.module.css";
+import styles from "./MealsSummary.module.css";
 
 const MealsSummary = () => {
   return (

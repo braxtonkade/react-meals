@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import AppContext from "../context/AppContext";
-import styles from "../css-modules/CartItem.module.css";
+import AppContext from "../../context/AppContext";
+import styles from "./CartItem.module.css";
 
 const CartItem = ({ name, price, amount }) => {
   const { cart, setCart } = useContext(AppContext);

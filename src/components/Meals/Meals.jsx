@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import AppContext from "../context/AppContext";
+import AppContext from "../../context/AppContext";
 import MealsSummary from "./MealsSummary";
-import AvailableMeals from "./AvailableMeals";
-import OrderView from "./OrderView";
+import AvailableMeals from "../AvailableMeals/AvailableMeals";
+import OrderView from "../OrderView/OrderView";
 
 const Meals = () => {
   const { ordered } = useContext(AppContext);
