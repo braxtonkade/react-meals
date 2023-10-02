@@ -1,27 +1,31 @@
-import React, { useContext } from "react";
-import AppContext from "../../context/AppContext";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { modalActions } from "../../store/modal";
 import styles from "./HeaderCartButton.module.css";
 import CartIcon from "./CartIcon";
 
 const HeaderCartButton = () => {
-  const { cart, setToggleModal } = useContext(AppContext);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   let amount;
-  if (cart.length > 0) {
-    amount = cart
+  if (cart.items?.length > 0) {
+    amount = cart.items
       .map((item) => item.amount)
       .reduce((accum, curr) => accum + curr);
   }
 
   function handleOpenCart() {
-    setToggleModal(true);
+    dispatch(modalActions.showCart());
   }
 
   return (
     <>
       <button onClick={handleOpenCart} className={styles.button}>
         {<CartIcon />}Your Cart
-        <div className={styles.badge}>{cart.length > 0 ? amount : 0}</div>
+        <div className={styles.badge}>
+          {cart.items?.length > 0 ? amount : 0}
+        </div>
       </button>
     </>
   );

@@ -1,47 +1,23 @@
-import { useContext } from "react";
-import AppContext from "../../context/AppContext";
+import { useSelector, useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart";
 import styles from "./CartItem.module.css";
 
 const CartItem = ({ name, price, amount }) => {
-  const { cart, setCart } = useContext(AppContext);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-  // Can you reduce duplication in handleAmountIncrease and handleAmountDecrease?
+  let currItem = cart.items.find((item) => item.name === name);
 
   function handleAmountIncrease() {
-    let currItem = cart.find((item) => item.name === name);
-
-    setCart(
-      cart.map((item) => {
-        if (item.name === currItem.name) {
-          return {
-            ...item,
-            amount: item.amount + 1,
-          };
-        }
-        return item;
-      })
-    );
+    dispatch(cartActions.addToCart({ ...currItem, amount: 1 }));
   }
 
-  // Can you reduce duplication in handleAmountIncrease and handleAmountDecrease?
   function handleAmountDecrease() {
-    let currItem = cart.find((item) => item.name === name);
+    dispatch(cartActions.removeItem({ type: "decrement", item: currItem }));
+  }
 
-    if (currItem.amount === 1) {
-      setCart(cart.filter((item) => item.name !== currItem.name));
-    } else {
-      setCart(
-        cart.map((item) => {
-          if (item.name === currItem.name) {
-            return {
-              ...item,
-              amount: item.amount - 1,
-            };
-          }
-          return item;
-        })
-      );
-    }
+  function handleDeleteItem() {
+    dispatch(cartActions.removeItem({ type: "delete", item: currItem }));
   }
 
   return (
@@ -55,8 +31,8 @@ const CartItem = ({ name, price, amount }) => {
       </div>
       <div className={styles.actions}>
         <button onClick={handleAmountDecrease}>-</button>
-
         <button onClick={handleAmountIncrease}>+</button>
+        <button onClick={handleDeleteItem}>🗑️</button>
       </div>
     </div>
   );

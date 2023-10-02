@@ -23,6 +23,12 @@ const DUMMY_MEALS = [
     description: "Healthy...and green...",
     price: 18.99,
   },
+  {
+    id: "m5",
+    name: "Milk",
+    description: "It's milk",
+    price: 10,
+  },
 ];
 
 export default DUMMY_MEALS;

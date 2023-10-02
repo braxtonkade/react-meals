@@ -1,27 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Modal.module.css";
 import Cart from "../Cart/Cart";
 import LoginPage from "../LoginPage/LoginPage";
-import AppContext from "../../context/AppContext";
 import GuestInfoForm from "../Forms/GuestInfoForm";
 import ConfirmOrder from "../ConfirmOrder/ConfirmOrder";
 import NewUserForm from "../Forms/NewUserForm";
+import { useDispatch, useSelector } from "react-redux";
+import { modalActions } from "../../store/modal";
+import OrderConfirmed from "../Cart/OrderConfirmed";
 
 const Modal = () => {
-  const { ordered, newUser, guest, ordering, loggingIn, loggedIn } =
-    useContext(AppContext);
+  const modal = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
+
+  function handleClickOut() {
+    dispatch(modalActions.closeModal());
+    dispatch(modalActions.setOrdering(false));
+  }
+
   return (
-    <div className={styles.backdrop}>
+    <>
       <div className={styles.modal}>
-        {!ordering && !loggingIn && <Cart />}
-        {/* {loggingIn && !newUser && <LoginPage />} */}
-        {/* {((ordering && !loggedIn) || !newUser || loggingIn) && <LoginPage />} */}
-        {((ordering && (!loggedIn || !newUser)) || loggingIn) && <LoginPage />}
-        {/* {ordering && !loggingIn && !ordered && !guest && <GuestInfoForm />} */}
-        {newUser && <NewUserForm />}
-        {guest && !ordered && ordering && <ConfirmOrder />}
+        {modal.view === "cart" && <Cart />}
+        {modal.view === "login" && <LoginPage />}
+        {modal.view === "new-user" && <NewUserForm />}
+        {modal.view === "guest" && <GuestInfoForm />}
+        {modal.view === "order" && <ConfirmOrder />}
+        {modal.view === "ordered" && <OrderConfirmed />}
       </div>
-    </div>
+      <div className={styles.backdrop} onClick={handleClickOut}></div>
+    </>
   );
 };
 

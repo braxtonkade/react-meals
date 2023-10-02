@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Header.module.css";
 import meals from "../../assets/images/meals.jpg";
 import HeaderCartButton from "./HeaderCartButton";
 import Button from "../UI/Button";
-import AppContext from "../../context/AppContext";
+import { useDispatch, useSelector } from "react-redux";
+import { modalActions } from "../../store/modal";
 
 const Header = () => {
-  const { setToggleModal, setLoggingIn, user } = useContext(AppContext);
+  const userInfo = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   function handleLoginClick() {
-    setLoggingIn(true);
-    setToggleModal(true);
+    dispatch(modalActions.showLogin());
   }
 
-  const btnLabel = user ? user.firstName : "Login";
+  const btnLabel = userInfo.loggedIn ? userInfo.firstName : "Login";
   return (
     <>
       <div className={styles.header}>

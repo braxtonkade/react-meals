@@ -1,56 +1,31 @@
-import React, { useContext, useState } from "react";
-
-import "animate.css/animate.css";
-
-import AppContext from "../../context/AppContext";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./Cart.module.css";
 import emptyCart from "../../assets/images/empty-cart.svg";
-import greenCheck from "../../assets/images/white-check-in-green-circle.jpg";
 import CartItem from "./CartItem";
+import { modalActions } from "../../store/modal";
 
 const Cart = () => {
-  const {
-    cart,
-    total,
-    guest,
-    ordered,
-    setCart,
-    setToggleModal,
-    setOrdered,
-    setPrevOrders,
-    setOrdering,
-    setLoggingIn,
-  } = useContext(AppContext);
+  const cart = useSelector((state) => state.cart);
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const dispatch = useDispatch();
 
   function handleCloseCart() {
-    setToggleModal(false);
+    dispatch(modalActions.closeModal());
   }
 
   function handleOrderCart() {
-    // setLoggingIn(true);
-    setOrdering(true);
+    if (!loggedIn) {
+      dispatch(modalActions.showLogin());
+      dispatch(modalActions.setOrdering(true));
+    } else {
+      dispatch(modalActions.showOrder());
+    }
   }
 
   return (
     <>
-      {ordered && (
-        <div className="animate__animated animate__jackInTheBox">
-          <div className={`${styles.ordered}`}>
-            <img
-              src={greenCheck}
-              alt="Green check verifying order has been completed."
-            />
-            <h3>Thank You!</h3>
-            <h4>Your order has been recieved.</h4>
-            <p>
-              You will recieve a confirmation email with information on how to
-              track the status of your order.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {cart.length < 1 && ordered === false && (
+      {cart.items.length < 1 && (
         <div className={styles.empty}>
           <img src={emptyCart} alt="Empty Shopping cart image" />
           <h3>Your Cart is Empty</h3>
@@ -59,7 +34,7 @@ const Cart = () => {
       )}
 
       <ul className={styles["cart-items"]}>
-        {cart.map((item) => (
+        {cart.items.map((item) => (
           <CartItem
             key={item.id}
             name={item.name}
@@ -69,10 +44,10 @@ const Cart = () => {
         ))}
       </ul>
 
-      {cart.length > 0 && (
+      {cart.items.length > 0 && (
         <div className={styles.total}>
           <p>Total Amount</p>
-          <p>${total.toFixed(2)}</p>
+          <p>${cart.total.toFixed(2)}</p>
         </div>
       )}
 
@@ -80,8 +55,7 @@ const Cart = () => {
         <button onClick={handleCloseCart} className={styles["button--alt"]}>
           Close
         </button>
-        {/* needs click event to order cart */}
-        {cart.length > 0 && (
+        {cart.items.length > 0 && (
           <button className={styles.button} onClick={handleOrderCart}>
             Order
           </button>
