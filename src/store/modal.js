@@ -22,6 +22,9 @@ const modalSlice = createSlice({
     showGuestSignUp(state) {
       state.view = "guest";
     },
+    showUserOrders(state) {
+      state.view = "order-history";
+    },
     closeModal(state) {
       state.view = "none";
     },

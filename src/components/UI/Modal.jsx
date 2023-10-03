@@ -8,6 +8,7 @@ import NewUserForm from "../Forms/NewUserForm";
 import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../../store/modal";
 import OrderConfirmed from "../Cart/OrderConfirmed";
+import OrderView from "../OrderView/OrderView";
 
 const Modal = () => {
   const modal = useSelector((state) => state.modal);
@@ -27,6 +28,7 @@ const Modal = () => {
         {modal.view === "guest" && <GuestInfoForm />}
         {modal.view === "order" && <ConfirmOrder />}
         {modal.view === "ordered" && <OrderConfirmed />}
+        {modal.view === "order-history" && <OrderView />}
       </div>
       <div className={styles.backdrop} onClick={handleClickOut}></div>
     </>

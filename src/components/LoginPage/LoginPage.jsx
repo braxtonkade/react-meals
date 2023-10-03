@@ -3,6 +3,7 @@ import styles from "./Modal.module.css";
 import LoginForm from "../Forms/LoginForm";
 import { modalActions } from "../../store/modal";
 import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../../store/user";
 
 const LoginPage = () => {
   const userInfo = useSelector((state) => state.user);
@@ -13,6 +14,10 @@ const LoginPage = () => {
     dispatch(modalActions.setOrdering(false));
   }
 
+  function handleLogout() {
+    dispatch(userActions.logout());
+  }
+
   async function fetchUserOrderHistory(email) {
     const encodedEmail = encodeURIComponent(email);
     const response = await fetch(
@@ -21,9 +26,10 @@ const LoginPage = () => {
 
     const data = await response.json();
 
-    const orders = data[userInfo.id].order;
+    const orders = data[userInfo.id].orders;
 
-    console.log(orders);
+    dispatch(userActions.setUser({ orders: orders }));
+    dispatch(modalActions.showUserOrders());
   }
 
   return (
@@ -43,10 +49,7 @@ const LoginPage = () => {
           >
             View Orders
           </button>
-          <button
-            onClick={() => console.log(userInfo)}
-            className={styles.button}
-          >
+          <button onClick={handleLogout} className={styles.button}>
             Logout
           </button>
         </div>

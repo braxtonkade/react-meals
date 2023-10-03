@@ -22,6 +22,12 @@ const userSlice = createSlice({
       state.loggedIn = true;
     },
     logout(state) {
+      state.firstName = "";
+      state.lastName = "";
+      state.email = "";
+      state.id = "";
+      state.loggedIn = false;
+      state.orders = [];
       state.loggedIn = false;
     },
     handleUserOrders(state, action) {

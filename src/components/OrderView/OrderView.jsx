@@ -1,48 +1,44 @@
-import { useContext } from "react";
 import styles from "./OrderView.module.css";
 import Card from "../UI/Card";
 import OrderItem from "../ConfirmOrder/OrderItem";
-import AppContext from "../../context/AppContext";
+import { useDispatch, useSelector } from "react-redux";
+import { modalActions } from "../../store/modal";
 
 const OrderView = () => {
-  const { setOrdered } = useContext(AppContext);
-  const order = JSON.parse(localStorage.getItem("cart"));
-
-  const total = order
-    .map((meal) => meal.price * meal.amount)
-    .reduce((accum, curr) => accum + curr)
-    .toFixed(2);
+  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.user.orders);
 
   return (
     <div className={styles.order}>
       <Card>
-        <h2 className={styles.heading}>Your Order</h2>
+        <h2 className={styles.heading}>Your Orders</h2>
         <ul>
-          {order.map((meal) => (
-            <OrderItem
-              key={meal.id}
-              name={meal.name}
-              price={meal.price}
-              amount={meal.amount}
-            />
+          {orders.map((order) => (
+            <>
+              <Card>
+                <h3>Order {orders.indexOf(order) + 1}:</h3>
+                {order.items.map((item) => (
+                  <OrderItem
+                    key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    amount={item.amount}
+                  />
+                ))}
+                <div className={styles.total}>
+                  <p>Order Total:</p>
+                  <p>${order.total}</p>
+                </div>
+              </Card>
+              <hr />
+            </>
           ))}
         </ul>
-        {/* <ul>
-          {order.map((meal) => (
-            <OrderItem
-              key={meal.id}
-              name={meal.name}
-              price={meal.price}
-              amount={meal.amount}
-            />
-          ))}
-        </ul> */}
-        <div className={styles.total}>
-          <p>Order Total:</p>
-          <p>${total}</p>
-        </div>
       </Card>
-      <button className={styles.button} onClick={() => setOrdered(false)}>
+      <button
+        className={styles.button}
+        onClick={() => dispatch(modalActions.closeModal())}
+      >
         Add Another Order
       </button>
     </div>
